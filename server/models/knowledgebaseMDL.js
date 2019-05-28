@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
 
 //Esquema de Áreas
 const areaSchema = mongoose.Schema({
@@ -7,7 +6,7 @@ const areaSchema = mongoose.Schema({
     custom_attributes:           { type: Object },
     createdAt:                   { type: Date, default: Date.now }
 });
-exports.employeeBukModel = mongoose.model('area', areaSchema, 'areas');
+exports.areaModel = mongoose.model('area', areaSchema, 'areas');
 
 //Esquema de Pregunta
 const preguntaSchema = mongoose.Schema({
@@ -16,7 +15,7 @@ const preguntaSchema = mongoose.Schema({
     custom_attributes:           { type: Object },
     createdAt:                   { type: Date, default: Date.now }
 });
-exports.employeeBukModel = mongoose.model('pregunta', preguntaSchema, 'preguntas');
+exports.preguntaModel = mongoose.model('pregunta', preguntaSchema, 'preguntas');
 
 //Esquema de Respuesta
 const respuestaSchema = mongoose.Schema({
@@ -26,5 +25,5 @@ const respuestaSchema = mongoose.Schema({
     custom_attributes:           { type: Object },
     createdAt:                   { type: Date, default: Date.now }
 });
-exports.employeeBukModel = mongoose.model('respuesta', respuestaSchema, 'respuestas');
+exports.respuestaModel = mongoose.model('respuesta', respuestaSchema, 'respuestas');
 
