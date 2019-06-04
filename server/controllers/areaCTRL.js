@@ -7,6 +7,7 @@ areaController.getArea = async(req, res) => {
                             .catch(err => res.json(err));
     res.send(area);
 };
+//HolaDrMundo
 
 areaController.getAreas = async(req, res) => {
     const areas = await KBMDLS.areaModel.find()
