@@ -1,10 +1,11 @@
 const KBMDLS = require('../models/knowledgebaseMDL');
 const areaController = {};
 
-areaController.getArea = (req, res) => {
-    res.json({
-        status: 'Ruta funcionandooo2'
-    })
+areaController.getArea = async(req, res) => {
+    id = req.body.id;
+    const area = await KBMDLS.areaModel.findOne({ id : "id" })
+                            .catch(err => res.json(err));
+    res.send(area);
 };
 
 areaController.getAreas = async(req, res) => {
