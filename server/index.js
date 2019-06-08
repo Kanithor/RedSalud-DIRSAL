@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const usuarios = require('./routes/usuariosRT'); 
 
 //Inicialización
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 //Rutas
 app.use('/api/adminArea', require('./routes/adminAreaRT'));
+app.use('/api/usuarios', usuarios );
 
 
 //Ejecución de server
