@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const {User,validate} = require('../models/usuarioMDL'); 
 const mongoose = require('mongoose'); 
 const express = require('express'); 
@@ -16,10 +17,16 @@ router.post('/', async (req,res) => {
         email: req.body.email, 
         password: req.body.password 
     }); 
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password,salt);
  
     await user.save(); 
  
-    res.send(user); 
+    res.send({
+        nombre: user.nombre,
+        rut: user.rut,
+        email: user.email
+    }); 
 }); 
  
 module.exports = router; 
