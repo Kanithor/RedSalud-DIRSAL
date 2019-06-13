@@ -6,9 +6,10 @@ const areaController = require('../controllers/areaCTRL');
 //Archivo de rutas en las cuales debe incurrir el sistema para gestionar áreas
 
 router.get('/', areaController.getAreas);
-router.get('/getArea', areaController.getArea);
+router.get('/getArea/', areaController.getArea);
+router.get('/getArea/:id', areaController.getAreaById);
 router.post('/newarea', areaController.newArea);
-router.put('/edit/:id', areaController.editArea);
-router.delete('/delete/:id', areaController.removeArea);
+router.put('/editArea/:id', areaController.editArea);
+router.delete('/deletearea/:id', areaController.removeArea);
 
 module.exports = router;
