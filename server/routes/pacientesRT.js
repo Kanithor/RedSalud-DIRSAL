@@ -1,5 +1,5 @@
 
-const {Paciente,validate} = require('../models/pacienteMDL'); 
+const {Paciente,validate} = require('../models/pacientesMDL'); 
 const mongoose = require('mongoose'); 
 const express = require('express'); 
 const router = express.Router(); 
