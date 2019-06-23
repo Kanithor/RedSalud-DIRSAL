@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 //const path = require('path');
 
 //Importación de rutas
+const klb = require('./routes/knowledgebaseRT');
 const adminArea = require('./routes/adminAreaRT'); 
 const usuarios = require('./routes/usuariosRT'); 
 const auth = require('./routes/authRT');
@@ -29,6 +30,7 @@ app.use(express.json());
 
 
 //Rutas
+app.use('/api/klb', klb);
 app.use('/api/adminArea', adminArea);
 app.use('/api/usuarios', usuarios );
 app.use('/api/auth', auth);
