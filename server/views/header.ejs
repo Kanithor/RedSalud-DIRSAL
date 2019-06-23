@@ -29,16 +29,15 @@
                 <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/encolar">Pedir Hora</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/desencolar">Peticiones de Hora</a>
+                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/desencolar">Atender horas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/">Gestión de Usuarios</a>
+                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/register">Gestión de Usuarios</a> 
             </li>
-            
             <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/">Logout</a>
+                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/ingresoPaciente">Cargar Archivo</a> 
             </li>
-            
+    
             </ul>
         </div>
         </nav>

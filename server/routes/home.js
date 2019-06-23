@@ -30,6 +30,14 @@ router.get('/encolar', function(req,res){
 router.get('/desencolar', function(req,res){
     res.render('desencolar');
 });
+router.get('/register', function(req,res){
+    res.render('register');
+});
+router.get('/ingresoPaciente', function(req,res){
+    res.render('ingresoPaciente');
+});
+
+
 router.use(error404)
     
 module.exports = router
