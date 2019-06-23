@@ -1,8 +1,63 @@
 <% include header.ejs %>
+<div class="container">
     <div class="row">
-        <div class="container">
-            <h2>Estas en Encolamiento de Hora</h2>
+        <div class="col"></div>
+        <div class="col-5">
+            <div class="card bg-light">
+                <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Formulario Petición hora</h4>
+                
+                <form>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-calendar-alt"></i> </span>
+                    </div>
+                    <input name="nfecha" class="form-control" placeholder="Ingresa fecha" type="date" required>
+                </div>
 
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                        </div>
+                    <input name="rut" class="form-control" placeholder="Ingresa  RUT" type="text" required>
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user-md"></i> </span>
+                    </div>
+                    <select class="form-control" required>
+                        <option name="cargo" >Selecciona Área </option>
+                        <option name="cargo" selected="general">General</option>
+                        <option name="cargo" selected="oculista">Oculista</option>
+                        <option name="cargo" selected="dermatologo">Dermatologo</option>
+                        <option name="cargo" selected="pediatria">Pediatria</option>
+                        <option name="cargo" selected="dentista">Dentista</option>
+                        <option name="cargo" selected="ginecologia">Ginecología</option>
+                        <option name="cargo" selected="urologia">Urología</option>
+                        <option name="cargo" selected="cardiologia">Cardiología</option>
+                        <option name="cargo" selected="oncologia">Oncología</option>
+                        <option name="cargo" selected="rehabilitacion">Rehabilitación</option>
+                        <option name="cargo" selected="neumologia">Neumología</option>
+                    </select>
+                </div>
+        
+                <div class="form-group  input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fas fa-comment-alt"></i> </span>
+                        </div>
+                     <textarea class="form-control" placeholder="comentarios y/o alcances" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    
+                </div>
+                   
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Crear usuario </button>
+                </div>                                                                           
+            </form>
+            </article>
+            </div>
         </div>
+        <div class="col"></div>
     </div>
-<% include footer.ejs%>
+</div> 
+<% include footer.ejs %>

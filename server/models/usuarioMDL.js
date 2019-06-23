@@ -1,35 +1,19 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const User = mongoose.model('User',  new mongoose.Schema({
-    nombre: {
-        type: String,
-        required:  true,
-        minlength: 5,
-        maxlength: 50
-    },
-    rut: {
-        type: String,
-        required:  true,
-        minlength: 10,
-        maxlength: 10,
-        unique: true
-    },
-    email: {
-        type: String,
-        required:  true,
-        minlength: 5,
-        maxlength: 255,
-        unique: true
-    },
-    password: {
-        type: String,
-        required:  true,
-        minlength: 5,
-        maxlength: 1024
-    }
-    
-}));
+
+const usuarioSchema = mongoose.Schema({
+    nombre:                  { type: String, required: true, minlength: 5, maxlength: 50 },
+    rut:                      { type: String, required: true, minlength: 10, maxlength: 10, unique: true },
+    email:                    {type: String, required:  true, minlength: 5, maxlength: 255, unique: true },
+    password:                  {type: String, required: true, minglength:5 , maxlength: 1024},
+    tipo:                       { type: String, required: true},
+    custom_attributes:           { type: Object },
+    createdAt:                   { type: Date, default: Date.now }
+});
+
+
+
 
 function validateUser(user) {
     const schema = {
@@ -43,5 +27,5 @@ function validateUser(user) {
 }
 
 
-exports.Genre = User;
+exports.usuarioModel = mongoose.model('usuario', usuarioSchema, 'usuarios');
 exports.validate = validateUser;
