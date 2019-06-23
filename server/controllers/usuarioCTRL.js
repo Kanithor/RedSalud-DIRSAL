@@ -23,6 +23,7 @@ usuarioController.newUsuario = (req, res) => {
     usuario.rut = req.body.rut;
     usuario.email = req.body.email;
     usuario.password = req.body.password;
+    usuario.tipo = _.startCase(req.body.tipo);
 
     
     pregunta.save((err, preguntaGuardada) => {
@@ -30,6 +31,14 @@ usuarioController.newUsuario = (req, res) => {
         else res.status(200).send({pregunta: preguntaGuardada})
     })
 };
+
+usuarioController.editUsuario = async(req,res) => {
+    const id = req.params.id;
+    const usuario = {"nombre": _.startCase(req.body.nombre), "rut": req.body.rut,"email": req.body.email,"password": req.body.password,"tipo": req.body.tipo};
+    const editUsuario = await usuarioMDL.usuarioModel.findByIdAndUpdate(id,{$set: usuario}, {new:true})
+                                                                           .catch(err => res.json(err));
+    res.send(editUsuario);                                      
+}
 
 usuarioController.removeUsuario = async(req, res) => {
     const id = req.params.id;

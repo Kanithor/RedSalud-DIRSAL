@@ -7,6 +7,7 @@ const usuarioSchema = mongoose.Schema({
     rut:                      { type: String, required: true, minlength: 10, maxlength: 10, unique: true },
     email:                    {type: String, required:  true, minlength: 5, maxlength: 255, unique: true },
     password:                  {type: String, required: true, minglength:5 , maxlength: 1024},
+    tipo:                       { type: String, required: true},
     custom_attributes:           { type: Object },
     createdAt:                   { type: Date, default: Date.now }
 });
