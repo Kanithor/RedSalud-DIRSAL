@@ -1,0 +1,35 @@
+<% include header.ejs %>
+    <div class="row">
+        <div class="container">
+            <h2>Ingreso de listados</h2>
+
+        </div>
+    </div>
+    <!--FORM-->
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <form id="uploadForm" enctype="multipart/form-data" action="newpacientes" method="post">
+
+                    <div class="form-group">
+                        <div>
+                            <label class="col-sm-12">Ingresar Archivo</label>
+                            <div>
+                                <input type="file" name="file" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">
+                        Enviar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <% include footer.ejs %>
