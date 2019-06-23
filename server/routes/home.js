@@ -37,7 +37,7 @@ router.get('/register', function(req,res){
     res.render('register');
 });
 router.get('/ingresoPaciente', function(req,res){
-    res.render('ingresoPaciente');
+    res.render('ingresopacientes');
 });
 
 
