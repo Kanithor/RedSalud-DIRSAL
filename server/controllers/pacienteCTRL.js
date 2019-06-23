@@ -3,7 +3,7 @@ const express = require('express');
 const upload = require('express-fileupload');
 const importExcel = require('convert-excel-to-json');
 
-express.use(upload());
+//express.use(upload());
 
 const pacienteMDL = require('../models/pacienteMDL');
 const pacienteController = {};
@@ -85,10 +85,7 @@ pacienteController.newPacientes = (req, res) => {
     } catch (e) {
         //error deleting the file
         console.log('No se pudo eliminar el archivo')
-    };
-
-});
-    
+    };    
 };
 
 pacienteController.getPaciente = async(req, res) => {
