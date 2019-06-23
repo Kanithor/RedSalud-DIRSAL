@@ -5,11 +5,14 @@ const klbController = require('../controllers/knowledgebaseCTRL');
 
 //Archivo de rutas en las cuales debe incurrir el sistema para gestionar áreas
 
-router.get('/', klbController.getPregunta);
+router.get('/', klbController.getPreguntas);
 router.get('/getPregunta/', klbController.getPregunta);
+router.get('/getPreguntas/', klbController.getPreguntas);
 router.get('/getPregunta/:id', klbController.getPreguntaById);
 router.get('/getArea/', klbController.getArea);
+router.get('/getAreas/', klbController.getAreas);
 router.get('/getArea/:id', klbController.getAreaById);
+router.get('/getRespuestas/', klbController.getRespuestas);
 router.get('/getRespuesta/:id', klbController.getRespuestaById);
 router.post('/newPregunta', klbController.newPregunta);
 router.post('/newArea', klbController.newArea);

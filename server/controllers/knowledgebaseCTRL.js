@@ -12,7 +12,7 @@ klbController.getPregunta = async(req,res) => {
 };
 
 klbController.getPreguntas = async(req, res) => {
-    const preguntas = await klb.preguntaModel.find()
+    const preguntas = await klbMDL.preguntaModel.find()
                             .catch(err => res.json(err));
     res.send(preguntas);
 };
@@ -37,8 +37,8 @@ klbController.getAreaById = async(req,res) => {
     res.send(area);
 };
 
-klbController.getArea = async(req, res) => {
-    const areas = await klb.areaModel.find()
+klbController.getAreas = async(req, res) => {
+    const areas = await klbMDL.areaModel.find()
                             .catch(err => res.json(err));
     res.send(areas);
 };
@@ -50,7 +50,7 @@ klbController.getRespuestaById = async(req,res) => {
 };
 
 klbController.getRespuestas = async(req, res) => {
-    const respuestas = await klb.respuestaModel.find()
+    const respuestas = await klbMDL.respuestaModel.find()
                             .catch(err => res.json(err));
     res.send(respuestas);
 };
@@ -58,8 +58,8 @@ klbController.getRespuestas = async(req, res) => {
 klbController.newPregunta = (req, res) => {
     let pregunta = new klbMDL.preguntaModel();
     pregunta.titulo = _.startCase(req.body.titulo);
-    pregunta.area = _.startcase(req.body.area);
-    pregunta.cuerpo = _.startcase(req.body.cuerpo);
+    pregunta.area = _.startCase(req.body.area);
+    pregunta.cuerpo = _.startCase(req.body.cuerpo);
 
     
     pregunta.save((err, preguntaGuardada) => {
@@ -81,7 +81,7 @@ klbController.newArea = (req, res) => {
 klbController.newRespuesta = (req, res) => {
     let respuesta = new klbMDL.respuestaModel();
     respuesta.cuerpo = _.startCase(req.body.cuerpo);
-    respuesta.area = _.startcase(req.body.area);
+    respuesta.area = _.startCase(req.body.area);
 
     
     respuesta.save((err, respuestaGuardada) => {
@@ -95,7 +95,7 @@ klbController.editPregunta = async(req, res) => {
     const pregunta = { "titulo": req.body.titulo,"area": req.body.area,"cuerpo": req.body.cuerpo };
     const editpregunta = await klbMDL.preguntaModel.findByIdAndUpdate(id, {$set: pregunta}, {new: true})
                                             .catch(err => res.json(err));
-    res.send(editpregunta);
+    res.send(editPregunta);
 };
 
 klbController.editArea = async(req, res) => {
@@ -103,7 +103,7 @@ klbController.editArea = async(req, res) => {
     const area = { "nombre": req.body.nombre};
     const editarea = await klbMDL.areaModel.findByIdAndUpdate(id, {$set: area}, {new: true})
                                             .catch(err => res.json(err));
-    res.send(editarea);
+    res.send(editArea);
 };
 
 klbController.editRespuesta = async(req, res) => {
@@ -111,26 +111,26 @@ klbController.editRespuesta = async(req, res) => {
     const respuesta = { "area": req.body.area,"cuerpo": req.body.cuerpo};
     const editrespuesta = await klbMDL.respuestaModel.findByIdAndUpdate(id, {$set: respuesta}, {new: true})
                                             .catch(err => res.json(err));
-    res.send(editrespuesta);
+    res.send(editRespuesta);
 };
 
 klbController.removePregunta = async(req, res) => {
     const id = req.params.id;
-    const removePregunta = await klb.preguntaModel.findByIdAndDelete(id)
+    const removePregunta = await klbMDL.preguntaModel.findByIdAndDelete(id)
                                             .catch(err => res.json(err));
     res.send(removePregunta);
 };
 
 klbController.removeArea = async(req, res) => {
     const id = req.params.id;
-    const removeArea = await klb.areaModel.findByIdAndDelete(id)
+    const removeArea = await klbMDL.areaModel.findByIdAndDelete(id)
                                             .catch(err => res.json(err));
     res.send(removeArea);
 };
 
 klbController.removeRespuesta = async(req, res) => {
     const id = req.params.id;
-    const removeRespuesta = await klb.respuestaModel.findByIdAndDelete(id)
+    const removeRespuesta = await klbMDL.respuestaModel.findByIdAndDelete(id)
                                             .catch(err => res.json(err));
     res.send(removeRespuesta);
 };
