@@ -93,7 +93,7 @@ klbController.newRespuesta = (req, res) => {
 klbController.editPregunta = async(req, res) => {
     const id = req.params.id;
     const pregunta = { "titulo": req.body.titulo,"area": req.body.area,"cuerpo": req.body.cuerpo };
-    const editpregunta = await klbMDL.preguntaModel.findByIdAndUpdate(id, {$set: pregunta}, {new: true})
+    const editPregunta = await klbMDL.preguntaModel.findByIdAndUpdate(id, {$set: pregunta}, {new: true})
                                             .catch(err => res.json(err));
     res.send(editPregunta);
 };
@@ -101,7 +101,7 @@ klbController.editPregunta = async(req, res) => {
 klbController.editArea = async(req, res) => {
     const id = req.params.id;
     const area = { "nombre": req.body.nombre};
-    const editarea = await klbMDL.areaModel.findByIdAndUpdate(id, {$set: area}, {new: true})
+    const editArea = await klbMDL.areaModel.findByIdAndUpdate(id, {$set: area}, {new: true})
                                             .catch(err => res.json(err));
     res.send(editArea);
 };
@@ -109,7 +109,7 @@ klbController.editArea = async(req, res) => {
 klbController.editRespuesta = async(req, res) => {
     const id = req.params.id;
     const respuesta = { "area": req.body.area,"cuerpo": req.body.cuerpo};
-    const editrespuesta = await klbMDL.respuestaModel.findByIdAndUpdate(id, {$set: respuesta}, {new: true})
+    const editRespuesta = await klbMDL.respuestaModel.findByIdAndUpdate(id, {$set: respuesta}, {new: true})
                                             .catch(err => res.json(err));
     res.send(editRespuesta);
 };

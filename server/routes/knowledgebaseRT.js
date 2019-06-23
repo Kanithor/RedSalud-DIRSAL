@@ -3,8 +3,6 @@ const router = express.Router();
 
 const klbController = require('../controllers/knowledgebaseCTRL');
 
-//Archivo de rutas en las cuales debe incurrir el sistema para gestionar áreas
-
 router.get('/', klbController.getPreguntas);
 router.get('/getPregunta/', klbController.getPregunta);
 router.get('/getPreguntas/', klbController.getPreguntas);
