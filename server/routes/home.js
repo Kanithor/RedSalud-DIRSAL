@@ -39,7 +39,9 @@ router.get('/register', function(req,res){
 router.get('/ingresoPaciente', function(req,res){
     res.render('ingresopacientes');
 });
-
+router.get('/us', function(req,res){
+    res.render('us');
+});
 
 router.use(error404)
     
