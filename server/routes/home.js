@@ -7,6 +7,7 @@ var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var queueMDL = require('../models/queueMDL' );
 var klbMDL = require('../models/knowledgebaseMDL' );
+var usuarioMDL = require('../models/usuarioMDL');
 
 var url = 'mongodb://localhost/redsalud';
 
