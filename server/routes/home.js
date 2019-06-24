@@ -6,7 +6,7 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var queueMDL = require('../models/queueMDL' );
-var usuarioMDL = require('../models/usuarioMDL');
+var klbMDL = require('../models/knowledgebaseMDL' );
 
 var url = 'mongodb://localhost/redsalud';
 
@@ -111,6 +111,13 @@ router.get('/us', function(req,res){
 
 router.get('/preguntaper', function(req,res){
     res.render('preguntaper');
+});
+
+router.get('/editarklb', async(req,res) => {
+    klbMDL.preguntaModel.find(function(err, preguntas){
+        if (err){res.send("Error")}
+        res.render('editarklb', {preguntas: preguntas})
+    });
 });
 
 
