@@ -57,9 +57,9 @@ klbController.getRespuestas = async(req, res) => {
 
 klbController.newPregunta = (req, res) => {
     let pregunta = new klbMDL.preguntaModel();
-    pregunta.titulo = _.startCase(req.body.titulo);
+    pregunta.titulo = req.body.titulo;
     pregunta.area = _.startCase(req.body.area);
-    pregunta.cuerpo = _.startCase(req.body.cuerpo);
+    pregunta.cuerpo = req.body.cuerpo;
 
     
     pregunta.save((err, preguntaGuardada) => {
