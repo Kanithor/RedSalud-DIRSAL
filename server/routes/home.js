@@ -137,11 +137,11 @@ router.get('/responderpreguntas', async(req,res) => {
         res.render('responderpreguntas', {preguntas: preguntas})
     });
 });
-router.get('/responderpreguntas', async(req,res) => {
-    knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
-        if (err){res.send("Error")}
-        res.render('responderpreguntas', {preguntas: preguntas})
-    });
+router.get('/verUsuarios', async(req,res)=>{
+	usuarioMDL.usuarioModel.find(function(err,solicitudes){
+		if(err){res.send("Error")}
+		res.render('verUsuarios',{solicitudes:solicitudes})
+	});
 });
 
 router.use(error404)
