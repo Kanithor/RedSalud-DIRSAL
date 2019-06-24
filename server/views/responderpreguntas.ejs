@@ -1,0 +1,19 @@
+<% include header.ejs %>
+
+
+<form>
+        <% preguntas.forEach(function(item) { %>
+           
+           
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Pregunta: <%= item.titulo %></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="responder pregunta"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary">Responder</button>
+
+        <% }) %>
+      </form>
+
+
+
+      <% include footer.ejs %>
