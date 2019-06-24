@@ -1,12 +1,35 @@
 const _ = require('lodash');
+const mongoose = require('mongoose');
+const async = require('async');
 
 const queueMDL = require('../models/queueMDL');
 const queueController = {};
 
+// var getSolicitudesFNC = function () {
+//     var promise = new Promise(function (resolve, reject) {
+//       var jsonStr;
+      
+//       const queues = queueMDL.queueModel.find(), function(err, result){
+//         if(err) {
+//           reject(err);
+//         } else {
+//           jsonStr = JSON.stringify(result)
+//           resolve(jsonStr);
+//         };
+  
+//       });
+  
+//     });
+  
+//     return promise;
+//   };
+
 queueController.getSolicitudes = async(req,res) => {
-    const queues = await queueMDL.queueModel.find()
-                            .catch(err => res.json(err));
-    res.send(queues);
+    mongoose.model("queuerts").find(function(err, solicitudes){
+        if (err){res.send("Error")}
+        res.send(solicitudes);
+        //res.render('desencolar', {solicitudes: solicitudes})
+    });
 };
 
 queueController.getSolicitudById = async(req,res) => {

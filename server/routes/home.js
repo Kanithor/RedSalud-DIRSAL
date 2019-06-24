@@ -1,5 +1,6 @@
 const express = require('express');
 var async = require('async');
+const mongoose = require('mongoose');
 const router = express.Router();
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
@@ -63,8 +64,11 @@ router.get('/knowledgebase', function(req,res){
     res.render('knowledgebase');
 });
 
-router.get('/desencolar', function(req,res){
-    res.render('desencolar');
+router.get('/desencolar', async(req,res) => {
+    UsersModel.find(function(err, solicitudes){
+        if (err){res.send("Error")}
+        res.render('desencolar', {solicitudes: solicitudes})
+    });
 });
 // router.get('/newpacientes', function(req,res){
 //     res.render('newpacientes');
@@ -82,6 +86,8 @@ router.get('/us', function(req,res){
 router.get('/preguntaper', function(req,res){
     res.render('preguntaper');
 });
+
+
 
 router.use(error404)
     
