@@ -5,7 +5,7 @@ const router = express.Router();
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
-var UsersModel 	= require('../models/queueMDL' );
+var queueMDL = require('../models/queueMDL' );
 
 var url = 'mongodb://localhost/redsalud';
 
@@ -28,7 +28,7 @@ router.post('/encolar', function(req, res, next){
 
 	}
 	//funcion manejada en la carpeta schema
-	var data = new UsersModel.queueModel(mybodydata);
+	var data = new queueMDL.queueModel(mybodydata);
 
 	data.save(function(err){
 		if (err){
@@ -65,7 +65,7 @@ router.get('/knowledgebase', function(req,res){
 });
 
 router.get('/desencolar', async(req,res) => {
-    UsersModel.queueModel.find(function(err, solicitudes){
+    queueMDL.queueModel.find(function(err, solicitudes){
         if (err){res.send("Error")}
         res.render('desencolar', {solicitudes: solicitudes})
     });

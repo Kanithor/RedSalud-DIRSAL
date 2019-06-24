@@ -41,9 +41,11 @@ pacienteController.getPacienteById = async(req, res) => {
 };
 
 pacienteController.getPacientes = async(req, res) => {
-    const pacientes = await pacienteMDL.pacienteModel.find()
-                            .catch(err => res.json(err));
-    res.send(pacientes);
+    pacienteMDL.pacienteModel.find(function(err, pacientes){
+        if (err){res.send("Error")}
+        res.render('listapacientes', {pacientes: pacientes})
+    });
+    //res.render('listapacientes');
 };
 
 pacienteController.newPaciente = (req, res) => {

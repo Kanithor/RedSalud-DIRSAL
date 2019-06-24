@@ -9,6 +9,41 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./public/css/main.css" />
     <link rel="stylesheet" href="./public/css/estilos.css">
+
+    <style>
+    h2 {
+    font-family: Arial, Verdana;
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: #091f2f;
+    text-transform: uppercase;
+    }
+    .accordion-section .panel-default > .panel-heading {
+        border: 0;
+        background: #f4f4f4;
+        padding: 0;
+    }
+    .accordion-section .panel-default .panel-title a {
+        display: block;
+        font-style: italic;
+        font-size: 1.5rem;
+    }
+    .accordion-section .panel-default .panel-title a:after {
+        font-family: 'FontAwesome';
+        font-style: normal;
+        font-size: 3rem;
+        content: "\f106";
+        color: #1f7de2;
+        float: right;
+        margin-top: -12px;
+    }
+    .accordion-section .panel-default .panel-title a.collapsed:after {
+        content: "\f107";
+    }
+    .accordion-section .panel-default .panel-body {
+        font-size: 1.2rem;
+    }
+    </style>
    
 </head>
 
@@ -16,7 +51,7 @@
 </article>
 
 <body >
-
+    
 
 
     <nav class="navbar navbar-dark bg-info navbar-expand-lg">
@@ -44,6 +79,9 @@
             <li class="nav-item">
                 <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/ingresoPaciente">Cargar Archivo</a> 
             </li>
+            <li class="nav-item">
+                    <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/api/paciente/">Listado de pacientes</a> 
+                </li>
             </ul>
         </div>
         </nav>
