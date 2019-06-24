@@ -118,7 +118,7 @@ router.get('/preguntaper', function(req,res){
 });
 
 router.get('/editarklb', async(req,res) => {
-    klbMDL.preguntaModel.find(function(err, preguntas){
+    knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
         if (err){res.send("Error")}
         res.render('editarklb', {preguntas: preguntas})
     });
