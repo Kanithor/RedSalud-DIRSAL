@@ -52,11 +52,32 @@ queueController.newSolicitud = (req,res) => {
     })
 };
 
-queueController.removeSolicitud = async(req, res) => {
-    const id = req.params.id;
-    const removeSolicitud = await queueMDL.queueModel.findByIdAndDelete(id)
-                                            .catch(err => res.json(err));
-    res.send(removeSolicitud);
+queueController.deleteSolicitud = async(req, res) => {
+    // const deleteUser = queueMDL.queueModel.findOne({
+    //     $and: [
+    //         { paciente : req.paciente },
+    //         { fecha: req.fecha },
+    //         { area: req.area}
+    //     ]},
+    //     )
+    console.log('HOLA ENTRO');
+    console.log(req.body);
+    
+    
+    queueMDL.queueModel.deleteOne({
+        $and: [
+               { paciente : req.paciente },
+               { fecha: req.fecha },
+               { area: req.area}
+             ]
+      }, function(err, areas){
+        if (err){res.send("Error")}
+        res.render('successfull')
+    });
+    // const id = req.params.id;
+    // const removeSolicitud = await queueMDL.queueModel.findByIdAndDelete(id)
+    //                                         .catch(err => res.json(err));
+    // res.send(removeSolicitud);
 };
 
 module.exports = queueController;
