@@ -131,7 +131,12 @@ router.get('/responderpreguntas', async(req,res) => {
         res.render('responderpreguntas', {preguntas: preguntas})
     });
 });
-
+router.get('/responderpreguntas', async(req,res) => {
+    knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
+        if (err){res.send("Error")}
+        res.render('responderpreguntas', {preguntas: preguntas})
+    });
+});
 
 router.use(error404)
     
