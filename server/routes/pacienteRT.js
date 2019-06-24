@@ -121,8 +121,7 @@ router.post('/newPacientes', archivo.single('file'), function(req, res) {
                                      {$set : newPaciente}
                                     ,
         
-                                    { upsert: true,
-                                        setDefaultsOnInsert: true
+                                    { upsert: true
                                     },
         
                                     function (err) {

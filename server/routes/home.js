@@ -14,7 +14,7 @@ var url = 'mongodb://localhost/redsalud';
 
 //call add del html From method
 router.get('/encolar', async(req, res, next) => {
-	knowledgebaseMDL.areaModel.find(function(err, areas){
+	knowledgebaseMDL.areaModel.find({ nombre: { $ne: "Administración" } }, function(err, areas){
         if (err){res.send("Error")}
         res.render('encolar', {areas: areas})
     });

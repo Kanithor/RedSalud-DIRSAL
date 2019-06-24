@@ -24,8 +24,11 @@
             <td><%= item.hora %></td>
             <td class="form-group" name="area" id="area"><%= item.area %> </td>
             <td><%= item.comentarios %> </td>
+                    <input type="hidden" name="paciente" value="<%= item.paciente %>" />
+                    <input type="hidden" name="fecha" value="<%= item.fecha %>" />
+                    <input type="hidden" name="area" value="<%= item.area %>" />
             <td>
-                <input type="submit" class="btn btn-info" formmethod="POST" >Hora Asignada</input>
+                <input type="submit" class="btn btn-info" formmethod="POST" value="Hora Calendarizada" ></input>
             </td>
             </form>
 

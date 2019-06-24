@@ -66,9 +66,9 @@ queueController.deleteSolicitud = async(req, res) => {
     
     queueMDL.queueModel.deleteOne({
         $and: [
-               { paciente : req.paciente },
-               { fecha: req.fecha },
-               { area: req.area}
+               { paciente : req.body.paciente },
+               { fecha: req.body.fecha },
+               { area: req.body.area}
              ]
       }, function(err, areas){
         if (err){res.send("Error")}
