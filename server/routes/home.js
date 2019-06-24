@@ -43,6 +43,10 @@ router.get('/us', function(req,res){
     res.render('us');
 });
 
+router.get('/preguntaper', function(req,res){
+    res.render('preguntaper');
+});
+
 router.use(error404)
     
 module.exports = router
