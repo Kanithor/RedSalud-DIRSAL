@@ -54,42 +54,62 @@
     </style>
    
 </head>
-
-
 </article>
 
 <body >
-    
-
 
     <nav class="navbar navbar-dark bg-info navbar-expand-lg">
-        <a class="navbar-brand" href="#">DIRSAL San Miguel</a>
+        <a class="navbar-brand" href="/">DIRSAL San Miguel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item mx-auto ">
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Base de Conocimientos
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/knowledgebase">Preguntas Frecuentes</a>
+                    <a class="dropdown-item" href="#">Responder Preguntas</a>
+                    <a class="dropdown-item" href="#">Editar Base de Conocimientos</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/knowledgebase">Preguntas Frecuentes</a>
+            <li class="nav-item mx-auto ">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestión de Solicitudes de Atención
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/encolar">Solicitar hora</a>
+                    <a class="dropdown-item" href="/desencolar">Visualizar horas solicitadas</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/encolar">Pedir Hora</a>
+            <li class="nav-item mx-auto ">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestión de Usuarios
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/resgister">Registrar Usuario</a>
+                    <a class="dropdown-item" href="#">Visualizar Listado de Usuarios</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/desencolar">Atender horas</a>
+            <li class="nav-item mx-auto ">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestión de Pacientes
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/ingresoPaciente">Actualizar Base de Datos</a>
+                    <a class="dropdown-item" href="/api/paciente/">Listar Pacientes</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/register">Gestión de Usuarios</a> 
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/ingresoPaciente">Cargar Archivo</a> 
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" href="http://localhost:3000/api/paciente/">Listado de pacientes</a> 
-                </li>
             </ul>
         </div>
         </nav>
