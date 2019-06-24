@@ -42,6 +42,7 @@ queueController.newSolicitud = (req,res) => {
     let queue = new queueMDL.queueModel();
     queue.area = _.startCase(req.body.area);
     queue.fecha = _.startCase(req.body.fecha);
+    queue.hora = req.body.hora;
     queue.comentarios = _.startCase(req.body.comentarios);
     queue.paciente = _.startCase(req.body.paciente);
 

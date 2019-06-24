@@ -8,8 +8,10 @@
           <th scope="col-1">#</th>
           <th scope="col-2">Paciente</th>
           <th scope="col-2">Fecha</th>
+          <th scope="col-2">Hora</th>
           <th scope="col-2">Area</th>
           <th scope="col-5">Comentarios</th>
+          <th scope="col">Eliminar Solicitud</th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +20,12 @@
             <td> ### </td>
             <td><%= item.paciente %> </td>
             <td><%= item.fecha %> </td>
+            <td><%= item.hora %></td>
             <td><%= item.area %> </td>
             <td><%= item.comentarios %> </td>
+            <td>
+                <button type="button" class="btn btn-info">Hora Asignada</button>
+            </td>
 
         </tr>
         <% }) %>

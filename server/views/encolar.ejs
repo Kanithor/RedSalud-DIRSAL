@@ -8,13 +8,33 @@
                 <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Formulario Petición hora</h4>
                 
-                <form  method="post">
+                <form method="post">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-calendar-alt"></i> </span>
                     </div>
-                    <input name="fecha" id="nfecha" class="form-control" placeholder="Ingresa fecha" type="date" required>
+                    <input name="fecha" id="nfecha" class="form-control" placeholder="Ingresar fecha" type="date" required>
                 </div>
+
+                <div class="col">
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                
+                                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                                </div>
+                                <input type="text" name="hora" id="hora" placeholder="Click en ícono para seleccionar hora deseada" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker3').datetimepicker({
+                                format: 'LT',
+
+                            });
+                        });
+                    </script>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -22,31 +42,21 @@
                         </div>
                     <input name="paciente" id="paciente" class="form-control" placeholder="Ingresa  RUT" type="number" required>
                 </div>
-            <!---
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user-md"></i> </span>
-                    </div>
-                    <select class="form-control" required>
-                        <option name="cargo" >Selecciona Área </option>
-                        <option name="cargo" selected="general">General</option>
-                        <option name="cargo" selected="oculista">Oculista</option>
-                        <option name="cargo" selected="dermatologo">Dermatologo</option>
-                        <option name="cargo" selected="pediatria">Pediatria</option>
-                        <option name="cargo" selected="dentista">Dentista</option>
-                        <option name="cargo" selected="ginecologia">Ginecología</option>
-                        <option name="cargo" selected="urologia">Urología</option>
-                        <option name="cargo" selected="cardiologia">Cardiología</option>
-                        <option name="cargo" selected="oncologia">Oncología</option>
-                        <option name="cargo" selected="rehabilitacion">Rehabilitación</option>
-                        <option name="cargo" selected="neumologia">Neumología</option>
-                    </select>
-                </div>  -->
+            
                 <div class="form-group  input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fas fa-user-md"></i> </span>
                         </div>
-                     <textarea class="form-control" placeholder="area de atencion" id="area" name="area" ></textarea>
+
+                        <select class="form-control" id="area" name="area">
+                            <% areas.forEach(function(item) { %>
+                                <option>
+                                    <%= item.nombre %>
+                                </option>
+                            <% }) %>
+                        </select>
+                              
+                     <!-- <textarea class="form-control" placeholder="area de atencion" id="area" name="area" ></textarea> -->
                     
                 </div>
                 <div class="form-group  input-group">

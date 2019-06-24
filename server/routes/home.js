@@ -5,16 +5,20 @@ const router = express.Router();
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
-var queueMDL = require('../models/queueMDL' );
-var klbMDL = require('../models/knowledgebaseMDL' );
 var usuarioMDL = require('../models/usuarioMDL');
+var queueMDL = require('../models/queueMDL');
+const knowledgebaseMDL = require('../models/knowledgebaseMDL');
 
 var url = 'mongodb://localhost/redsalud';
 
 
 //call add del html From method
-router.get('/encolar', function(req, res, next){
-	res.render('encolar');
+router.get('/encolar', async(req, res, next) => {
+	knowledgebaseMDL.areaModel.find(function(err, areas){
+        if (err){res.send("Error")}
+        res.render('encolar', {areas: areas})
+    });
+	//res.render('encolar');
 });
 //add form processings usando post method en html
 router.post('/encolar', function(req, res, next){
@@ -26,7 +30,7 @@ router.post('/encolar', function(req, res, next){
 		fecha : req.body.fecha,
 		comentarios : req.body.comentario,
 		paciente : req.body.paciente,
-		createdAt : req.body.createdAt
+		hora : req.body.hora
 
 	}
 	//funcion manejada en la carpeta schema
@@ -37,7 +41,7 @@ router.post('/encolar', function(req, res, next){
 			res.render('encolar',{message : 'user registered not succefully'});
 		}
 		else{
-			res.render('encolar', {message: 'User register succefully'});
+			res.render('successfull', {message: 'User register succefully'});
 		}
 	})
 
@@ -115,7 +119,7 @@ router.get('/preguntaper', function(req,res){
 });
 
 router.get('/editarklb', async(req,res) => {
-    klbMDL.preguntaModel.find(function(err, preguntas){
+    knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
         if (err){res.send("Error")}
         res.render('editarklb', {preguntas: preguntas})
     });
