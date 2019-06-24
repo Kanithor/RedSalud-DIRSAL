@@ -74,7 +74,7 @@ klbController.newArea = (req, res) => {
     
     area.save((err, areaGuardada) => {
         if (err) res.status(500).send({message: 'No se pudo guardar area'})
-        else res.status(200).send({area: areaGuardada})
+        res.render('successfull')
     })
 };
 

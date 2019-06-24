@@ -53,17 +53,6 @@ queueController.newSolicitud = (req,res) => {
 };
 
 queueController.deleteSolicitud = async(req, res) => {
-    // const deleteUser = queueMDL.queueModel.findOne({
-    //     $and: [
-    //         { paciente : req.paciente },
-    //         { fecha: req.fecha },
-    //         { area: req.area}
-    //     ]},
-    //     )
-    console.log('HOLA ENTRO');
-    console.log(req.body);
-    
-    
     queueMDL.queueModel.deleteOne({
         $and: [
                { paciente : req.body.paciente },
@@ -74,10 +63,6 @@ queueController.deleteSolicitud = async(req, res) => {
         if (err){res.send("Error")}
         res.render('successfull')
     });
-    // const id = req.params.id;
-    // const removeSolicitud = await queueMDL.queueModel.findByIdAndDelete(id)
-    //                                         .catch(err => res.json(err));
-    // res.send(removeSolicitud);
 };
 
 module.exports = queueController;
