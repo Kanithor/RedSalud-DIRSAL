@@ -5,6 +5,7 @@ const router = express.Router();
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
+var usuarioMDL = require('../models/usuarioMDL');
 var queueMDL = require('../models/queueMDL');
 const knowledgebaseMDL = require('../models/knowledgebaseMDL');
 
@@ -124,7 +125,18 @@ router.get('/editarklb', async(req,res) => {
     });
 });
 
-
+router.get('/responderpreguntas', async(req,res) => {
+    knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
+        if (err){res.send("Error")}
+        res.render('responderpreguntas', {preguntas: preguntas})
+    });
+});
+router.get('/responderpreguntas', async(req,res) => {
+    knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
+        if (err){res.send("Error")}
+        res.render('responderpreguntas', {preguntas: preguntas})
+    });
+});
 
 router.use(error404)
     
