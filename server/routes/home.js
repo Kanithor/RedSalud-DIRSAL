@@ -143,6 +143,9 @@ router.get('/verUsuarios', async(req,res)=>{
 		res.render('verUsuarios',{solicitudes:solicitudes})
 	});
 });
+router.get('/area', function(req,res){
+	res.render('area');
+});
 
 router.use(error404)
     
