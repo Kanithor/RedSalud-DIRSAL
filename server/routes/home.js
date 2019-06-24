@@ -6,6 +6,7 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var queueMDL = require('../models/queueMDL' );
+var usuarioMDL = require('../models/usuarioMDL');
 
 var url = 'mongodb://localhost/redsalud';
 
@@ -76,6 +77,31 @@ router.get('/desencolar', async(req,res) => {
 router.get('/register', function(req,res){
     res.render('register');
 });
+router.post('/register', function(req,res,next){
+	console.log(req.body)
+
+	const mybo={
+		nombre: req.body.nombre,
+		rut: req.body.rut,
+		email: req.body.email,
+		password: req.body.password,
+		tipo: req.body.tipo,
+		custom_attributes: req.body.custom_attributes,
+		createdAt: req.body.createdAt,
+	}
+
+	var data = new usuarioMDL.usuarioModel(mybo);
+
+	data.save(function(err){
+		if (err){
+			res.render('register',{message : 'user registered not succefully'});
+		}
+		else{
+			res.render('register', {message: 'User register succefully'});
+		}
+	})
+});
+
 router.get('/ingresoPaciente', function(req,res){
     res.render('ingresopacientes');
 });

@@ -9,4 +9,3 @@ const queueSchema = mongoose.Schema({
     createdAt:              { type: Date, default: Date.now }
 });
 exports.queueModel = mongoose.model('queue', queueSchema, 'queues');
-
