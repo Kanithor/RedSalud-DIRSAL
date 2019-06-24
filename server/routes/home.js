@@ -81,6 +81,31 @@ router.get('/desencolar', async(req,res) => {
 router.get('/register', function(req,res){
     res.render('register');
 });
+router.post('/register', function(req,res,next){
+	console.log(req.body)
+
+	const mybo={
+		nombre: req.body.nombre,
+		rut: req.body.rut,
+		email: req.body.email,
+		password: req.body.password,
+		tipo: req.body.tipo,
+		custom_attributes: req.body.custom_attributes,
+		createdAt: req.body.createdAt,
+	}
+
+	var data = new usuarioMDL.usuarioModel(mybo);
+
+	data.save(function(err){
+		if (err){
+			res.render('register',{message : 'user registered not succefully'});
+		}
+		else{
+			res.render('register', {message: 'User register succefully'});
+		}
+	})
+});
+
 router.get('/ingresoPaciente', function(req,res){
     res.render('ingresopacientes');
 });
@@ -90,6 +115,13 @@ router.get('/us', function(req,res){
 
 router.get('/preguntaper', function(req,res){
     res.render('preguntaper');
+});
+
+router.get('/editarklb', async(req,res) => {
+    klbMDL.preguntaModel.find(function(err, preguntas){
+        if (err){res.send("Error")}
+        res.render('editarklb', {preguntas: preguntas})
+    });
 });
 
 
