@@ -124,6 +124,12 @@ router.get('/editarklb', async(req,res) => {
         res.render('editarklb', {preguntas: preguntas})
     });
 });
+router.get('/verUsuarios', async(req,res)=>{
+	usuarioMDL.usuarioModel.find(function(err,solicitudes){
+		if(err){res.send("Error")}
+		res.render('verUsuarios',{solicitudes:solicitudes})
+	});
+});
 
 router.get('/responderpreguntas', async(req,res) => {
     knowledgebaseMDL.preguntaModel.find(function(err, preguntas){
