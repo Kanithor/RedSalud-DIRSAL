@@ -1,6 +1,44 @@
 const express = require('express');
 var async = require('async');
 const router = express.Router();
+var mongo = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
+var assert = require('assert');
+var UsersModel 	= require('../schema/user' );
+
+var url = 'mongodb://localhost/redsalud';
+
+
+//call add del html From method
+router.get('/encolar', function(req, res, next){
+	res.render('encolar');
+});
+//add form processings usando post method en html
+router.post('/encolar', function(req, res, next){
+	console.log(req.body)
+
+	//Arreglo de datos
+	const mybodydata= {
+		area : req.body.area,
+		fecha : req.body.fecha,
+		comentarios : req.body.comentario,
+		paciente : req.body.paciente,
+		createdAt : req.body.createdAt
+
+	}
+	//funcion manejada en la carpeta schema
+	var data = UsersModel(mybodydata);
+
+	data.save(function(err){
+		if (err){
+			res.render('encolar',{message : 'user registered not succefully'});
+		}
+		else{
+			res.render('encolar', {message: 'User register succefully'});
+		}
+	})
+
+});
 
 
 function error404(req, res, next)
@@ -17,16 +55,14 @@ function error404(req, res, next)
 	res.render('error', locals)
 
 	next()
-}
+};
 router.get('/', function(req,res){
     res.render('index');
 });
 router.get('/knowledgebase', function(req,res){
     res.render('knowledgebase');
 });
-router.get('/encolar', function(req,res){
-    res.render('encolar');
-});
+
 router.get('/desencolar', function(req,res){
     res.render('desencolar');
 });
@@ -43,6 +79,6 @@ router.get('/us', function(req,res){
     res.render('us');
 });
 
-router.use(error404)
+router.use(error404);
     
-module.exports = router
+module.exports = router;

@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-//const path = require('path');
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser');
 
 //Importación de rutas
 const queue = require('./routes/queueRT');
@@ -28,7 +29,9 @@ app.set('views', viewDir)
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.json());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 //Rutas
 app.use('/api/queue',queue);
