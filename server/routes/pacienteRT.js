@@ -90,51 +90,65 @@ router.post('/newPacientes', archivo.single('file'), function(req, res) {
                     obj = JSON.parse(data);
                     var contador = 0;
                     console.log(obj.length);
-
-                    // for (contador in obj.length){
-                    //     if (obj[contador].estado == 'inactivo'){ obj[contador].estado = false }
-                    //     else if (obj[contador].estado == 'activo'){ obj[contador].estado = true};
-                        
-                        
-                    //     var rut = formateaRut(obj[contador].rut);
-                    //     var newPaciente = new pacienteMDL.pacienteModel();
-                    //     newPaciente.rut = rut;
-                    //     newPaciente.nombre = obj[contador].nombre;
-                    //     newPaciente.estado = obj[contador].estado;
-                    //     newPaciente.prevision = obj[contador].prevision;
-                    //     newPaciente.email = obj[contador].email;
-                    //     newPaciente.afiliado = obj[contador].afiliado;
-
-                    //     pacienteMDL.pacienteModel.findOneAndUpdate(
-                    //         { "rut": newPaciente.rut
-                    //         },
-
-                    //          {$set : newPaciente}
-                    //         ,
-
-                    //         { upsert: true
-                    //         },
-
-                    //         function (err) {
-                    //             if(err){
-                    //                 console.log(err);
-                    //                 res.json({err:true, 	message:'No Se Ha Ingresado Paciente'});
-                    //             }
-                    //         }
-                    //     )
-                    // }
                     
-                    async.whilst (
-                        function () { return contador != obj.length; 
-                        },
-                        function (cb) {
+                    // async.whilst (
+                    //     function () { return contador != obj.length; 
+                    //     },
+                    //     function (cb) {
                             
+                    //         if (obj[contador].estado == 'inactivo'){ obj[contador].estado = false }
+                    //         else if (obj[contador].estado == 'activo'){ obj[contador].estado = true};
+                            
+                    //         var rut = formateaRut(obj[contador].rut);
+                    //         var newPaciente = new pacienteMDL.pacienteModel();
+                    //         newPaciente.rut = rut;
+                    //         newPaciente.nombre = obj[contador].nombre;
+                    //         newPaciente.estado = obj[contador].estado;
+                    //         newPaciente.prevision = obj[contador].prevision;
+                    //         newPaciente.email = obj[contador].email;
+                    //         newPaciente.afiliado = obj[contador].afiliado;
+                            
+                    //         console.log(contador);
+                    //         console.log(newPaciente);
+                            
+                    //         try { 
+                    //             pacienteMDL.pacienteModel.save(newPaciente);
+                    //         } catch (error) {
+                    //             pacienteMDL.pacienteModel.findOneAndUpdate(
+                    //                 { "rut": newPaciente.rut
+                    //                 },
+        
+                    //                  {$set : newPaciente}
+                    //                 ,
+        
+                    //                 { upsert: true
+                    //                 },
+        
+                    //                 function (err) {
+                    //                     if(err){
+                    //                         console.log(err);
+                    //                         res.json({err:true, 	message:'No Se Ha Ingresado Paciente'});
+                    //                     }
+                    //                 }
+                    //             )
+                    //         }
+                    //         contador++;
+                    //         cb();
+                    //     },
+                    //     function (err) {
+                    //         if (err){ res.send(err)}
+                    //     }
+                    // ); 
+
+                    async.forEach(
+                        obj,
+                        function( cb ){
                             if (obj[contador].estado == 'inactivo'){ obj[contador].estado = false }
                             else if (obj[contador].estado == 'activo'){ obj[contador].estado = true};
                             
                             
                             var rut = formateaRut(obj[contador].rut);
-                            var newPaciente = new pacienteMDL.pacienteModel();
+                            var newPaciente = {};
                             newPaciente.rut = rut;
                             newPaciente.nombre = obj[contador].nombre;
                             newPaciente.estado = obj[contador].estado;
@@ -145,45 +159,33 @@ router.post('/newPacientes', archivo.single('file'), function(req, res) {
                             console.log(contador);
                             
                             console.log(newPaciente);
-                            
-                            try { 
-                                pacienteMDL.pacienteModel.save(newPaciente);
-                            } catch (error) {
-                                pacienteMDL.pacienteModel.findOneAndUpdate(
-                                    { "rut": newPaciente.rut
-                                    },
-        
-                                     {$set : newPaciente}
-                                    ,
-        
-                                    { upsert: true
-                                    },
-        
-                                    function (err) {
-                                        if(err){
-                                            console.log(err);
-                                            res.json({err:true, 	message:'No Se Ha Ingresado Paciente'});
-                                        }
+                        
+                            pacienteMDL.pacienteModel.findOneAndUpdate(
+                                { "rut": newPaciente.rut
+                                },
+    
+                                    {$set : newPaciente}
+                                ,
+    
+                                { upsert: true
+                                },
+    
+                                function (err) {
+                                    if(err){
+                                        console.log(err);
+                                        res.json({err:true, 	message:'No Se Ha Ingresado Paciente'});
                                     }
-                                )
-                            }
-                                
-                                
-                              contador++;
-                              cb();
-                            
+                                }
+                            )
+                            contador++;
                         },
                         function (err) {
-                            
-                                
                             if (err){ res.send(err)}
+                            console.log(obj);
+                            console.log('Operación default realizada.');
+                            res.render('successfull');
                         }
-                    ); 
-                    
-
-                    console.log(obj);
-                                console.log('Operación default realizada.');
-                                res.render('successfull');
+                    )
                     
                 });
             }
