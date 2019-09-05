@@ -137,14 +137,15 @@ router.get('/responderpreguntas', async(req,res) => {
         res.render('responderpreguntas', {preguntas: preguntas})
     });
 });
-router.get('/verUsuarios', async(req,res)=>{
-	usuarioMDL.usuarioModel.find(function(err,solicitudes){
-		if(err){res.send("Error")}
-		res.render('verUsuarios',{solicitudes:solicitudes})
-	});
-});
 router.get('/area', function(req,res){
 	res.render('area');
+});
+
+router.get('/verAreas', async(req,res)=>{
+	knowledgebaseMDL.areaModel.find(function(err,solicitudes){
+		if(err){res.send("Error")}
+		res.render('verAreas',{solicitudes:solicitudes})
+	});
 });
 
 router.use(error404)

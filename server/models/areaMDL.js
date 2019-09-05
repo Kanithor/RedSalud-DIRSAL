@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const areaSchema = mongoose.Schema({
-    nombre : {type: String, require:true}
+    nombre : {type: String, required:true}
 });
 
 exports.areaModel = mongoose.model('areas',areaSchema,'areas');
